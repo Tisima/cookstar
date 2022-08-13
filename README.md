@@ -1,24 +1,33 @@
-# README
+# <クックスター>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## さまざまな方が作る料理のレシピを知ることができるサイト
+### サイトテーマ
+料理のレシピを投稿したり、見ることができるSNSサイト
 
-Things you may want to cover:
+### テーマを選んだ理由
+もともと料理が好きで、料理を作る際にクックパッドを使用する機会がありお世話になっているので、自らの手で料理のアプリケーションを作りたいと思い、このテーマにしました。 また、現在コロナの影響で多くの人が外に出ず食事を家で済ますようになりました。なので、使いやすい料理のアプリは需要があると思いました。
 
-* Ruby version
+### ターゲットユーザ
+料理を広めたいと考えている、料理人や料理研究家
 
-* System dependencies
+料理を作る一般の主婦や一人暮らしの方
 
-* Configuration
+### 主な利用シーン
+料理の作り方が不安な時
 
-* Database creation
+食べたい料理を探す時
 
-* Database initialization
+料理のレシピを他の人に広めたい時
 
-* How to run the test suite
+## 設計書
+「現在検討中です」
 
-* Services (job queues, cache servers, search engines, etc.)
+## 開発環境
+- OS：Linux(CentOS)
+- 言語：HTML,CSS,JavaScript,Ruby,SQL
+- フレームワーク：Ruby on Rails
+- JSライブラリ：jQuery
+- IDE：Cloud9
 
-* Deployment instructions
-
-* ...
+## 使用素材
+「現在検討中です」
