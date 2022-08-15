@@ -1,0 +1,12 @@
+<h1>クックスターにようこそ!</h1><br>
+<h3>クックスターでは料理のレシピを見ることと投稿することができます</h3>
+
+<%=link_to homes_guest_sign_in_path,class: 'text-block', method: :post do %>
+<i class="fas fa-user-check"></i>
+ゲストログイン（閲覧用）
+<% end %>
+
+<%=link_to new_user_registration_path,class: 'text-block' do %>
+<i class="fas fa-user-check"></i>
+新規登録
+<% end %>

@@ -1,0 +1,17 @@
+<h1>レシピ作成</h1>
+
+  <%= form_with(model: @recipe, url: recipes_path, method: :post, local: true) do |f| %>
+
+  <h4>タイトル</h4>
+  <%= f.text_field :title %>
+
+  <h4>本文</h4>
+  <%= f.text_area :body %>
+
+  <!-- 追加部分 -->
+  <h4>画像</h4>
+  <%= f.file_field :image, accept: "image/*" %>
+
+  <%= f.submit 'レシピ作成' %>
+
+<% end %>

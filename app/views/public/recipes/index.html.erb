@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row">
+	<div class="col-xs-2">
+    <h2>レシピ一覧</h2>
+    </div>
+
+    <div class="col-xs-8">
+      <%= link_to new_recipe_path,class: 'text-block' do %>
+         <i class="fas fa-utensils"></i>
+         レシピ投稿はこちら
+        <% end %>
+    </div>
+  </div>
+	  <div class="row">
+		<% @recipes.each do |recipe| %>
+		<div class="col-xs-3">
+			<%= link_to recipe_path(recipe) do %>
+			  <%= recipe.title %><br>
+     		  <% if recipe.image.attached? %>
+                <%= image_tag recipe.image, size: "200x200" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "200x200" %>
+              <% end %>
+			    <%= recipe.body %>
+			<% end %>
+		</div>
+		<% end %>
+	</div>
+<%= paginate @recipes %>
+</div>
