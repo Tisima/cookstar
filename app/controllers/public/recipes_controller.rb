@@ -4,10 +4,21 @@ class Public::RecipesController < ApplicationController
   end
 
   def show
+    @recipe = Recipe.find(params[:id])
   end
 
   def new
     @recipe = Recipe.new
+  end
+
+  def create
+    @recipe = Recipe.new(recipe_params)
+    if @recipe.save
+      redirect_to recipe_path(@recipe.id)
+      flash[:success] = "商品を登録しました"
+    else
+      render "new_recipes_path"
+    end
   end
 
     private

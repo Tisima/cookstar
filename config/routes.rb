@@ -16,7 +16,7 @@ post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
 
 
 scope module: :public do
-  resources :recipes, only: [:show, :index, :new]
+  resources :recipes, only: [:show, :index, :new, :create]
   resources :members, only: [:show, :index]
   get 'relationships/followings'
   get 'relationships/followers'
