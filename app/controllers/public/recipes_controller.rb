@@ -17,12 +17,12 @@ class Public::RecipesController < ApplicationController
       redirect_to recipe_path(@recipe.id)
       flash[:success] = "商品を登録しました"
     else
-      render "new_recipes_path"
+      render 'new'
     end
   end
 
     private
   def recipe_params
-    params.require(:recipe).permit(:title, :body, :image)
+    params.require(:recipe).permit(:title, :body, :image, :ingredients)
   end
 end

@@ -1,11 +1,14 @@
 <h1>レシピ作成</h1>
 
-  <%= form_with(model: @recipe, url: recipes_path, method: :post, local: true) do |f| %>
+  <%= form_with(model: @recipe, method: :post, local: true) do |f| %>
 
-  <h4>タイトル</h4>
+  <h4>料理名</h4>
   <%= f.text_field :title %>
 
-  <h4>本文</h4>
+  <h4>材料</h4>
+  <%= f.text_area :ingredients %>
+
+  <h4>レシピ</h4>
   <%= f.text_area :body %>
 
   <!-- 追加部分 -->

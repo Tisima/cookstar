@@ -59,6 +59,7 @@ ActiveRecord::Schema.define(version: 2022_08_14_143248) do
 
   create_table "recipes", force: :cascade do |t|
     t.string "title", null: false
+    t.text "ingredients", null: false
     t.text "body", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -68,6 +69,7 @@ ActiveRecord::Schema.define(version: 2022_08_14_143248) do
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "name"
+    t.string "introduction"
     t.boolean "is_deleted", default: true, null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"

@@ -25,7 +25,7 @@
 
     <% if user_signed_in? %><%# ユーザーがログインしている時 %>
 
-         <%= link_to recipes_path,class: 'text-light' do %>
+         <%= link_to user_path(current_user),class: 'text-light' do %>
          <i class="fas fa-home"></i>
          マイページ
          <% end %>
@@ -35,12 +35,15 @@
         レシピ一覧
         <% end %>
 
-        <%= link_to members_path,class: 'text-light' do %>
-         <i class="fas fa-cart-plus"></i>
+        <%= link_to users_path,class: 'text-light' do %>
+         <i class="fas fa-users"></i>
          会員一覧
         <% end %>
 
-        <%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: 'text-light' %>
+        <%= link_to destroy_user_session_path, method: :delete, class: 'text-light' do %>
+         <i class="fas fa-times-circle"></i>
+         サインアウト
+        <% end %>
 
 
         <% elsif admin_signed_in? %><%# 管理者がログインしている時 %>
