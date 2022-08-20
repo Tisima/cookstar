@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="row">
+   <div class="col-md-12">
+    <h2>User info</h2>
+    <tbody>
+      <%= form_with model: @user, url: user_path(@user.id), method: :patch do |f| %>
+        <h4>ユーザー名</h4>
+        <p><%= f.text_field :name %></p><br>
+        <h4>ユーザー画像</h4>
+        <p><%= f.file_field :profile_image, accept: "image/*" %></p><br>
+        <h4>メッセージ</h4>
+        <%= f.text_area :introduction %>
+        <%= f.submit '登録する' %>
+      <% end %>
+     </tbody>
+    </div>
+  </div>
+</div>

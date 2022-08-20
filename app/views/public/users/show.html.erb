@@ -4,9 +4,27 @@
       <%= image_tag @user.get_profile_image, size: "250x230"%>
     </div>
     <div class="col-xg-7">
-      <h3 class="profile-name"><%= @user.name %></h3>
-      <h3 class="profile-name"><%= @user.introduction %></h3>
-  <% if @user.id == current_user.id %>
-  <p><%= link_to "プロフィール編集", edit_user_path(@user) %></p>
-  <% end %>
+      <% if @user.id == current_user.id %>
+      <p><span>　　　　　　　　　</span><%= link_to "編集する", edit_user_path(@user) %></p>
+      <% end %>
+      <h4 class="profile-name"><span>　</span>ユーザ名<br><p></p><span>　　</span><%= @user.name %></h4>
+      <p>　　　</p>
+      <h4 class="profile-introduction"><span>　</span>紹介<br><p></p><span>　　</span><%= @user.introduction %></h4>
+    </div>
+  </div>
+  <div class="row">
+    		<% @recipes.each do |recipe| %>
+		<div class="col-xs-3">
+			<%= link_to recipe_path(recipe) do %>
+			  <%= recipe.title %><br>
+     		  <% if recipe.image.attached? %>
+                <%= image_tag recipe.image, size: "200x200" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "200x200" %>
+              <% end %>
+			<% end %>
+		</div>
+		<% end %>
+	</div>
+  </div>
 </div>
