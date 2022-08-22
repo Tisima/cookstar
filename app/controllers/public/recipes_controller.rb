@@ -21,6 +21,17 @@ class Public::RecipesController < ApplicationController
     end
   end
 
+  def edit
+    @recipe = Recipe.find(params[:id])
+  end
+
+  def destroy
+    @recipe = Recipe.find(params[:id])
+    @recipe.destroy
+    redirect_to recipes_path
+  end
+
+
     private
   def recipe_params
     params.require(:recipe).permit(:title, :body, :image, :ingredients)

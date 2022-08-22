@@ -1,25 +1,31 @@
   <div class="container">
     <div class="row">
-      <div class="col-xg-3">
+      <div class="col-xg-5 pt-2">
+
         <% if @recipe.image.attached? %>
-          <%= image_tag @recipe.image, size: "450x400" %>
+          <%= image_tag @recipe.image, size: "300x250" %>
         <% else %>
           <%= image_tag 'no_image', size: "300x300" %>
         <% end %>
       </div>
 
-      <div class="col-xg-4">
+      <div class="col-xg-7">
         <div>
-          <h3 class="red-border px-3 pb-2"><%= @recipe.title %></h3>
+          <h2 class="red-border px-5 pt-5"><%= @recipe.title %></h2>
+          <% if @recipe.user == current_user %>
+            <%= link_to "編集する", edit_recipe_path %>
+            <%= link_to "削除する", recipe_path(@recipe), method: :delete %>
+          <% end %>
         </div>
+      </div>
+    </div>
+      <div class="row">
         <div>
-          <h5 class="red-border px-3 pb-2">材料</h5>
-          <p class="ml-5"><%= @recipe.ingredients %></p>
-
-        </div>
-        <div>
+          <h5 class="red-border px-3 pb-2 pt-4">材料</h5>
+          <p class="ml-5"><%= @recipe.ingredients %></p><br>
           <h5 class="red-border px-3 pb-2">料理手順</h5>
           <p class="ml-5"><%= @recipe.body %></p>
+          <p class="text-right pt-3">登録日<%= @recipe.created_at.strftime('%Y/%m/%d') %></p>
         </div>
       </div>
     </div>
