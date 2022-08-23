@@ -6,6 +6,7 @@
     <div class="col-9">
       <% if @user.id == current_user.id %>
       <p class="text-right pt-3"><%= link_to "編集する", edit_user_path(@user) %></p>
+      <p class="text-right pt-3"><%= link_to "退会する", confirm_unsubscribe_path(@user.id) %></p>
       <% end %>
       <h4 class="profile-name pl-5">ユーザ名<br><p></p><span>　　</span><%= @user.name %></h4>
       <h4 class="profile-introduction pl-5 pt-4">紹介<br><p></p><span>　　</span><%= @user.introduction %></h4>
