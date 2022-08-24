@@ -13,7 +13,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 root "homes#top"
 get 'homes/about'
 post '/homes/guest_sign_in', to: 'homes#guest_sign_in'
-
+get "search" => "searches#search"
 
 scope module: :public do
   resources :recipes, only: [:show, :index, :new, :create, :edit, :update, :destroy]

@@ -16,6 +16,19 @@
             <%= link_to "編集する", edit_recipe_path %>
             <%= link_to "削除する", recipe_path(@recipe), method: :delete %>
           <% end %>
+          <% if @recipe.favorited_by?(current_user) %>
+          <p>
+            <%= link_to favorites_path(@recipe), method: :delete do %>
+              ♥<%= @recipe.favorites.count %> いいね
+            <% end %>
+          </p>
+            <% else %>
+          <p>
+            <%= link_to favorites_path(@recipe), method: :post do %>
+              ♡<%= @recipe.favorites.count %> いいね
+            <% end %>
+           </p>
+          <% end %>
         </div>
       </div>
     </div>
