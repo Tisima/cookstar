@@ -5,9 +5,7 @@ class Recipe < ApplicationRecord
 
 # 検索方法分岐
   def self.looks(search, word)
-    if search == "perfect_match"
-      @recipe = Recipe.where("title LIKE?","#{word}")
-    elsif search == "partial_match"
+    if search == "partial_match"
       @recipe = Recipe.where("title LIKE?","%#{word}%")
     else
       @recipe = Recipe.all

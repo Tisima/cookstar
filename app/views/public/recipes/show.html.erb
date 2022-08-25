@@ -1,6 +1,6 @@
   <div class="container">
     <div class="row">
-      <div class="col-xg-5 pt-2">
+      <div class="col-xg-4 pt-2">
 
         <% if @recipe.image.attached? %>
           <%= image_tag @recipe.image, size: "300x250" %>
@@ -9,21 +9,22 @@
         <% end %>
       </div>
 
-      <div class="col-xg-7">
+      <div class="col-xg-8">
         <div>
           <h2 class="red-border px-5 pt-5"><%= @recipe.title %></h2>
           <% if @recipe.user == current_user %>
-            <%= link_to "編集する", edit_recipe_path %>
-            <%= link_to "削除する", recipe_path(@recipe), method: :delete %>
+            <div class="text-right pt-3"><%= link_to "編集する", edit_recipe_path, class: 'btn btn-success' %>
+            <span>　　</span><%= link_to "削除する", recipe_path(@recipe), method: :delete, class: 'btn btn-danger' %>
+            </div>
           <% end %>
           <% if @recipe.favorited_by?(current_user) %>
-          <p>
+          <p class="px-4 py-4">
             <%= link_to favorites_path(@recipe), method: :delete do %>
               ♥<%= @recipe.favorites.count %> いいね
             <% end %>
           </p>
             <% else %>
-          <p>
+          <p class="px-4 py-4">
             <%= link_to favorites_path(@recipe), method: :post do %>
               ♡<%= @recipe.favorites.count %> いいね
             <% end %>

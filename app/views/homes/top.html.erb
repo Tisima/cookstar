@@ -1,12 +1,10 @@
-<h1>クックスターにようこそ!</h1><br>
-<h3>クックスターでは料理のレシピを見ることと投稿することができます</h3>
+    <h1 class="top-title py-4">クックスターにようこそ!</h1><br>
+    <h3 class="py-4">このサイトは料理のレシピの閲覧と投稿ができます</h3>
 
-<%=link_to homes_guest_sign_in_path,class: 'text-block', method: :post do %>
-<i class="fas fa-user-check"></i>
-ゲストログイン（閲覧用）
-<% end %>
+    <div class="mx-auto" style="width: 200px; py-3">
+      <%= link_to "ゲストログイン", homes_guest_sign_in_path, method: :post, class: 'btn btn-info btn-sm btn-block mb-3' %>
+    </div>
 
-<%=link_to new_user_registration_path,class: 'text-block' do %>
-<i class="fas fa-user-check"></i>
-新規登録
-<% end %>
+    <div class="mx-auto" style="width: 200px;">
+      <%= link_to "新規登録", new_user_registration_path, class: 'btn btn-success btn-sm btn-block mb-3' %>
+    </div>
