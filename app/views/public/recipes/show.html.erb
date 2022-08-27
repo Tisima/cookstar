@@ -19,13 +19,13 @@
           <% end %>
           <% if @recipe.favorited_by?(current_user) %>
           <p class="px-4 py-4">
-            <%= link_to favorites_path(@recipe), method: :delete do %>
+            <%= link_to recipe_favorites_path(@recipe), method: :delete do %>
               ♥<%= @recipe.favorites.count %> いいね
             <% end %>
           </p>
             <% else %>
           <p class="px-4 py-4">
-            <%= link_to favorites_path(@recipe), method: :post do %>
+            <%= link_to recipe_favorites_path(@recipe), method: :post do %>
               ♡<%= @recipe.favorites.count %> いいね
             <% end %>
            </p>

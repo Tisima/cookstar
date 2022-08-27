@@ -1,0 +1,26 @@
+        <li class="nav-item px-1">
+          <%= link_to user_path(current_user),class: 'text-light' do %>
+            <i class="fas fa-home"></i>
+            マイページ
+          <% end %>
+        </li>
+
+        <li class="nav-item px-1">
+        <%= link_to  recipes_path,class: 'text-light' do %>
+        <i class="fas fa-birthday-cake"></i>
+        新着レシピ
+        <% end %>
+        </li>
+
+        <li class="nav-item px-1">
+        <%= link_to ranking_path,class: 'text-light' do %>
+        <i class="fas fa-mountain"></i>
+         ランキング
+        <% end %>
+
+        <li class="nav-item px-1">
+        <%= link_to destroy_user_session_path, method: :delete, class: 'text-light' do %>
+         <i class="fas fa-times-circle"></i>
+         サインアウト
+        <% end %>
+        </li>

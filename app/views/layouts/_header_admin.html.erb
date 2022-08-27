@@ -1,11 +1,20 @@
-<%= link_to  recipes_path,class: 'text-light' do %>
+<li class="nav-item px-1">
+<%= link_to  admin_recipes_path,class: 'text-light' do %>
   <i class="fas fa-birthday-cake"></i>
   レシピ一覧
 <% end %>
+</li>
 
-<%= link_to members_path,class: 'text-light' do %>
+<li class="nav-item px-1">
+<%= link_to admin_users_path,class: 'text-light' do %>
   <i class="fas fa-cart-plus"></i>
   会員一覧
 <% end %>
+</li>
 
-<%= button_to "ログアウト", destroy_user_session_path, method: :delete, class: 'text-light' %>
+<li class="nav-item px-1">
+  <%= link_to destroy_user_session_path, method: :delete, class: 'text-light' do %>
+    <i class="fas fa-times-circle"></i>
+    サインアウト
+  <% end %>
+</li>

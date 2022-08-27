@@ -10,67 +10,48 @@
   </head>
 
   <body>
-      <header class="navbar navbar-dark bg-primary" >
-   <nav class="navbar navbar-dark bg-primary">
+      <header class="sticky-top">
+    <nav class="navbar navbar-expand-md navbar-dark bg-dark text-white py-3">
     <div class="container">
-     <a class = "navbar-brand px-4" href ="/",>
-        <span>COOKSTAR</span>
-          </a>
+     <a class = "navbar-brand px-4" href ="/",>COOKSTAR</a>
 
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <ul class="navbar-nav ml-auto">
 
-        <% if user_signed_in? %>
-           <div class="search_form px-5">
-             <%= form_with url: search_path, local: true, method: :get do |f| %>
-               <%= f.text_field :word %>
-               <%= f.select :range, options_for_select([['User'], ['Recipe']]) %>
-               <%= f.select :search, options_for_select([["部分一致","partial_match"]]) %>
-               <%= f.submit "検索", class: "btn btn-light" %>
-             <% end %>
-           </div>
-         <% end %>
        <% if user_signed_in? %><%# ユーザーがログインしている時 %>
-
-         <%= link_to user_path(current_user),class: 'text-light' do %>
-         <i class="fas fa-home"></i>
-         マイページ
-         <% end %>
-
-        <%= link_to  recipes_path,class: 'text-light' do %>
-        <i class="fas fa-birthday-cake"></i>
-        レシピ一覧
-        <% end %>
-
-        <%= link_to users_path,class: 'text-light' do %>
-         <i class="fas fa-users"></i>
-         会員一覧
-        <% end %>
-
-        <%= link_to destroy_user_session_path, method: :delete, class: 'text-light' do %>
-         <i class="fas fa-times-circle"></i>
-         サインアウト
-        <% end %>
-
+        <%= render 'layouts/header_user' %>
 
         <% elsif admin_signed_in? %><%# 管理者がログインしている時 %>
           <%= render 'layouts/header_admin' %>
+
         <% else %><%# それ以外の時 %>
 
+        <li class="nav-item px-1">
         <%= link_to new_user_session_path,class: 'text-light' do %>
         <i class="fas fa-sign-in-alt"></i>
         ログイン
         <% end %>
+        </li>
 
+        <li class="nav-item px-1">
         <%= link_to homes_about_path,class: 'text-light' do %>
          <i class="fas fa-address-card"></i>
          アバウト
          <% end %>
+         </li>
 
+         <li class="nav-item px-1">
          <%= link_to new_admin_session_path, class: 'text-light'  do %>
          <i class="far fa-user"></i>
          管理者ログイン
          <% end %>
+         </li>
 
       <% end %>
+      </div>
     </div>
    </nav>
   </header>
