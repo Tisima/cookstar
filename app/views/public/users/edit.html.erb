@@ -1,18 +1,26 @@
 <div class="container">
   <div class="row">
-   <div class="col-md-12">
-    <h2>User info</h2>
-    <tbody>
-      <%= form_with model: @user, url: user_path(@user.id), method: :patch do |f| %>
-        <h4>ユーザー名</h4>
-        <p><%= f.text_field :name %></p><br>
-        <h4>ユーザー画像</h4>
-        <p><%= f.file_field :profile_image, accept: "image/*" %></p><br>
-        <h4>メッセージ</h4>
-        <%= f.text_area :introduction %>
-        <%= f.submit '登録する' %>
-      <% end %>
-     </tbody>
+   <div class="col-xs-7">
+    <h2 class="py-5">ユーザ編集</h2>
+      <table class="teble">
+        <tbody>
+          <%= form_with model: @user, url: user_path(@user.id), method: :patch, local: true  do |f| %>
+            <tr>
+              <td><h4 class="py-4 px-4">ユーザー名</h4></td>
+              <td><%= f.text_field :name %></td>
+            </tr>
+             <tr>
+              <td><h4 class="py-4 px-4">画像</h4></td>
+              <td><%= f.file_field :profile_image, accept: "image/*" %></td>
+            </tr>
+            <tr>
+              <td><h4 class="py-4 px-4">紹介文</h4></td>
+              <td><%= f.text_area :introduction %></td>
+              <td><%= f.submit '登録する', class: 'btn btn-primary' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
   </div>
 </div>

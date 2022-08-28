@@ -37,13 +37,24 @@ class Public::RecipesController < ApplicationController
     render "index"
   end
 
+  def update
+    @recipe = Recipe.find(params[:id])
+  if @recipe.update(recipe_params)
+    flash[:notice]="レシピを更新しました！"
+    redirect_to recipe_path(@recipe.id)
+  else
+    render :edit
+  end
+  end
+
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
     redirect_to recipes_path
   end
 
-    private
+  private
+
   def recipe_params
     params.require(:recipe).permit(:title, :body, :image, :ingredients)
   end

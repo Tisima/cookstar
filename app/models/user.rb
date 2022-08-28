@@ -6,8 +6,11 @@ class User < ApplicationRecord
 
    has_many :recipes, dependent: :destroy
    has_one_attached :profile_image
-   has_many :favorites, dependent: :destroy
-   has_many :favorited_recipes, through: :favorites, source: :recipe
+   has_many :likes, dependent: :destroy
+
+   def liked_by?(recipe_id)
+    likes.where(recipe_id: recipe_id).exists?
+   end
 
   def get_profile_image
     unless profile_image.attached?

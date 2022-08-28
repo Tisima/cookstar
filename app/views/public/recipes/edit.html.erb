@@ -1,0 +1,26 @@
+<div class="container">
+  <div class="row">
+   <div class="col-xs-7">
+    <h2 class="py-5">レシピ編集</h2>
+      <table class="teble">
+        <tbody>
+          <%= form_with model: @recipe, url: recipe_path(@recipe.id), method: :patch do |f| %>
+            <tr>
+              <td><h4 class="py-4 px-4">レシピ名</h4></td>
+              <td><%= f.text_field :title %></td>
+            </tr>
+             <tr>
+              <td><h4 class="py-4 px-4">画像</h4></td>
+              <td><%= f.file_field :image, accept: "image/*" %></td>
+            </tr>
+            <tr>
+              <td><h4 class="py-4 px-4">紹介文</h4></td>
+              <td><%= f.text_area :ingredients %></td>
+              <td><%= f.submit '登録する', class: 'btn btn-primary' %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

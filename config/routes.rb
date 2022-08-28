@@ -19,12 +19,10 @@ scope module: :public do
   get 'unsubscribe/:name' => 'users#unsubscribe', as: 'confirm_unsubscribe'
   patch ':id/withdraw/:name' => 'users#withdraw', as: 'withdraw_user'
   put 'withdraw/:name' => 'users#withdraw'
-  get 'relationships/followings'
-  get 'relationships/followers'
   get 'search' => 'recipes#search'
   get 'ranking' => 'recipes#ranking'
   resources :recipes, only: [:show, :index, :new, :create, :edit, :update, :destroy] do
-   resource :favorites, only: [:create, :destroy]
+   resources :likes, only: [:create, :destroy]
   end
 end
 
