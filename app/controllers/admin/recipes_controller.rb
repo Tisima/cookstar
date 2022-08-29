@@ -2,9 +2,10 @@ class Admin::RecipesController < ApplicationController
   def index
     @recipes = Recipe.all.page(params[:page]).order(created_at: :desc)
   end
-  
+
   def show
     @recipe = Recipe.find(params[:id])
+    @user = @recipe.user
   end
 
   def edit
