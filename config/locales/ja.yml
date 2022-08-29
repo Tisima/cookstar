@@ -1,0 +1,10 @@
+ja:
+  activerecord:
+    models:
+      event: イベント
+    attributes:
+      event:
+        title: タイトル
+        ingredients: 材料
+        body: 作り方
+        image: 画像

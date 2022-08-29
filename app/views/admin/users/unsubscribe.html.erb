@@ -7,6 +7,7 @@
     <%= link_to :back do %>
       戻る
     <% end %>
-    <%#= link_to "退会する", admin_withdraw_user_path(@user), method: :patch %>
+   
+    <%= link_to "退会する", admin_withdraw_user_path(@user.id), method: :patch %>
   </div>
 </div>

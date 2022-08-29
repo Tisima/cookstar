@@ -1,26 +1,35 @@
 <div class="container">
   <div class="row">
-   <div class="col-xs-7">
-    <h2 class="py-5">レシピ編集</h2>
-      <table class="teble">
-        <tbody>
-          <%= form_with model: @recipe, url: recipe_path(@recipe.id), method: :patch do |f| %>
-            <tr>
-              <td><h4 class="py-4 px-4">レシピ名</h4></td>
-              <td><%= f.text_field :title %></td>
-            </tr>
-             <tr>
-              <td><h4 class="py-4 px-4">画像</h4></td>
-              <td><%= f.file_field :image, accept: "image/*" %></td>
-            </tr>
-            <tr>
-              <td><h4 class="py-4 px-4">紹介文</h4></td>
-              <td><%= f.text_area :ingredients %></td>
-              <td><%= f.submit '登録する', class: 'btn btn-primary' %></td>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
+    <div class="col-12">
+      <% if @recipe.errors.any? %>
+        <%= @recipe.errors.count %>件のエラーが発生しました
+    <ul>
+      <% @recipe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+<% end %>
+      <h2 class="py-5">レシピ編集</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-5 py-3">
+      <%= form_with model: @recipe, url: recipe_path(@recipe.id), local: true, method: :patch do |f| %>
+    <h4>料理名</h4>
+        <%= f.text_field :title, :placeholder => "＊必須" ,size: "50x10" %>
+    </div>
+    <div class="col-7 text-center pt-4">
+      <%= f.submit 'レシピを作成', class: 'btn btn-primary' %>
+    </div>
+  <div class="row">
+    <div class="col-9">
+      <h4 class="pt-3">画像(必須)</h4>
+      <%= f.file_field :image, accept: "image/*" %>
+      <h4 class="pt-3">材料</h4>
+      <%= f.text_area :ingredients, :placeholder => "＊必須" ,size: "130x6" %>
+      <h4 class="pt-3">作り方</h4>
+      <%= f.text_area :body, :placeholder => "＊必須" ,size: "130x8" %>
+    <% end %>
     </div>
   </div>
 </div>

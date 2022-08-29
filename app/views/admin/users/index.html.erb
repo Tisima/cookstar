@@ -4,7 +4,7 @@
   <h2>会員一覧</h2>
   <span>　　　　</span>
   <div class="search-form">
-    <%= form_with url: user_search_path, method: :get, local: true do |f| %>
+    <%= form_with url: admin_user_search_path, method: :get, local: true do |f| %>
       <%= f.text_field :keyword, value: @keyword %>
       <%= f.submit "検索" %>
     <% end %>
@@ -18,7 +18,7 @@
       <tr>
       <td><%= image_tag user.get_profile_image, size: "100x100"%></td>
       <td><%= user.name %></td>
-      <td><%= link_to "詳細ページ", user_path(user.id) %></td>
+      <td><%= link_to "詳細ページ", admin_user_path(user.id) %></td>
     </tr>
     <% end %>
 </table>

@@ -4,6 +4,11 @@ class Recipe < ApplicationRecord
   has_many :recipe_comments, dependent: :destroy
   has_many :liked_users, through: :likes, source: :user
 
+  validates :title, presence: true
+  validates :ingredients, presence: true
+  validates :body, presence: true
+  validates :image, presence: true
+
   has_one_attached :image
 
 

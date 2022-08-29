@@ -4,14 +4,14 @@ class Public::RecipesController < ApplicationController
   end
 
   def ranking
-    recipes = Recipe.includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
-    @recipes = Kaminari.paginate_array(recipes).page(params[:page]).per(5)
+    recipe = Recipe.includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
+    @recipes = Kaminari.paginate_array(recipe).page(params[:page]).per(9)
   end
 
   def show
     @recipe = Recipe.find(params[:id])
-    @recipe_comment = Recipe.new
     @user = @recipe.user
+    @recipe_comment = RecipeComment.new
   end
 
   def new

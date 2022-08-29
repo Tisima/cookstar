@@ -8,8 +8,14 @@ class Admin::UsersController < ApplicationController
     @users = User.all
   end
 
+  def search
+  @users = User.search(params[:keyword])
+  @keyword = params[:keyword]
+  render "index"
+  end
+
   def unsubscribe
-    @user = User.find_by(name: params[:name])
+    @user = User.find(params[:id])
   end
 
   def withdraw

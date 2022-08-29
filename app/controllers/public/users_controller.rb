@@ -23,6 +23,12 @@ class Public::UsersController < ApplicationController
   end
   end
 
+  def search
+  @users = User.search(params[:keyword])
+  @keyword = params[:keyword]
+  render "index"
+  end
+
   def unsubscribe
     @user = User.find_by(name: params[:name])
   end
@@ -38,12 +44,6 @@ class Public::UsersController < ApplicationController
     @user = User.find(params[:id])
     recipes= Recipe.where(user_id: @user.id).pluck(:id)
     @like_recipes = Recipe.find(recipes)
-  end
-
-  def search
-    @users = User.search(params[:keyword])
-    @keyword = params[:keyword]
-    render "index"
   end
 
     private

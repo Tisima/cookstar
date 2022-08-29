@@ -5,9 +5,11 @@ class Public::SessionsController < Devise::SessionsController
 before_action :reject_inactive_user, only: [:create]
 
   def reject_inactive_user
-    @user = User.find_by(name: params[:user][:name])
-    if @user.present? && @user.valid_password?(params[:user][:password]) && @user.is_deleted
-      redirect_to new_user_session_path
+    @user = User.find_by(email: params[:user][:email])
+    if @user
+      if @user.present? && @user.valid_password?(params[:user][:password]) && @user.is_deleted
+        redirect_to new_user_session_path
+      end
     end
   end
 end

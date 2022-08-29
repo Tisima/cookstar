@@ -1,6 +1,6 @@
   <div class="container">
     <div class="row">
-      <div class="col-4 pt-2">
+      <div class="col-3 pt-2">
 
         <% if @recipe.image.attached? %>
           <%= image_tag @recipe.image, size: "300x250" %>
@@ -10,34 +10,33 @@
       </div>
 
       <div class="col-5">
-        <div>
-          <h2 class="red-border px-5 pt-5"><%= @recipe.title %></h2>
+        <h2 class="red-border px-5 pt-5"><%= @recipe.title %></h2>
+        <div class="text-center pt-3">
           <% if @recipe.user == current_user %>
-            <div class="text-center pt-3"><%= link_to "編集する", edit_recipe_path, class: 'btn btn-success' %>
-            <span>　　</span><%= link_to "削除する", recipe_path(@recipe), method: :delete, class: 'btn btn-danger' %>
-            </div>
+              <%= link_to "編集する", edit_recipe_path, class: 'btn btn-success' %>
+              <span>　　</span><%= link_to "削除する", recipe_path(@recipe), method: :delete, class: 'btn btn-danger' %>
           <% end %>
           <% if @recipe.liked_by?(current_user) %>
-          <p class="px-4 py-4">
-            <%= link_to recipe_like_path(@recipe), method: :delete do %>
-              ♥<%= @recipe.likes.count %> いいね
-            <% end %>
-          </p>
-            <% else %>
-          <p class="px-4 py-4">
-            <%= link_to recipe_likes_path(@recipe), method: :post do %>
-              ♡<%= @recipe.likes.count %> いいね
-            <% end %>
-           </p>
-          <% end %>
+        <p class="py-4">
+        <%= link_to recipe_like_path(@recipe), method: :delete do %>
+          ♥<%= @recipe.likes.count %> いいね
+        <% end %>
+        </p>
+        <% else %>
+        <p class="px-4 py-4">
+        <%= link_to recipe_likes_path(@recipe), method: :post do %>
+          ♡<%= @recipe.likes.count %> いいね
+        <% end %>
+         </p>
+        <% end %>
         </div>
       </div>
       <div class="col-3">
         <h5 class="red-border px-3 pb-2 pt-4">投稿ユーザー</h5>
-          <%= link_to user_path(@user) do %>
-            <%= image_tag @user.get_profile_image, size: "100x100"%>
-            <%= @user.name %>
-          <% end %>
+        <%= link_to user_path(@user) do %>
+          <%= image_tag @user.get_profile_image, size: "100x100"%>
+          <%= @user.name %>
+        <% end %>
       </div>
     </div>
       <div class="row">
@@ -50,21 +49,28 @@
         </div>
       </div>
       	<div class="py-4">
-          <p>コメント件数：<%= @recipe.recipe_comments.count %></p>
-          <% @recipe.recipe_comments.each do |post_comment| %>
-            <p class="py-3"><%= image_tag recipe_comment.user.profile_image(100,100) %></p>
-            <%= recipe_comment.user.name %>
-            <%= recipe_comment.created_at.strftime('%Y/%m/%d') %><%= recipe_comment.comment %>
-            <% if post_comment.user == current_user %>
-              <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete %>
-            <% end %>
-          <% end %>
+      	  <%= form_with model: [@recipe, @recipe_comment] do |f| %>
+          <%= f.text_area :comment, rows: '3', placeholder: "コメントをここに" %>
+          <%= f.submit "送信する" %>
+        <% end %>
+
         </div>
       <div>
-        <%#= form_with model: [@recipe, @recipe_comment] do |f| %>
-          <%#= f.text_area :comment, rows: '5', placeholder: "コメントをここに" %>
-          <%#= f.submit "送信する" %>
-        <%# end %>
+        <p>コメント件数：<%= @recipe.recipe_comments.count %></p>
+        <table>
+          <tbody>
+            <% @recipe.recipe_comments.each do |recipe_comment| %>
+              <tr>
+                <td><p class="py-1 px-4"><%= image_tag recipe_comment.user.profile_image, size: "100x100" %></p></td>
+                <td>　　<%= recipe_comment.comment %>　　　<td>
+                <td>投稿者　<%= recipe_comment.user.name %>　　<td>
+                <td><%= recipe_comment.created_at.strftime('%Y/%m/%d') %><td>
+                <% if recipe_comment.user == current_user %>
+                  <%= link_to "削除", recipe_recipe_comment_path(recipe_comment.recipe_id, recipe_comment.id), method: :delete %>
+              <% end %>
+            <% end %>
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
