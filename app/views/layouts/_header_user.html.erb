@@ -19,6 +19,12 @@
         <% end %>
 
         <li class="nav-item px-1">
+        <%= link_to users_path,class: 'text-light' do %>
+        <i class="fas fa-users"></i>
+         会員一覧
+        <% end %>
+
+        <li class="nav-item px-1">
         <%= link_to destroy_user_session_path, method: :delete, class: 'text-light' do %>
          <i class="fas fa-times-circle"></i>
          サインアウト

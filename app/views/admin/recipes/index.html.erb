@@ -1,14 +1,7 @@
 <div class="container py-3">
   <div class="row">
 	<div class="col-xs-2">
-    <h2>新規レシピ</h2>
-    </div>
-
-    <div class="col-xs-12 pull-right pl-5 pt-3">
-      <%= link_to new_recipe_path,class: 'text-block' do %>
-         <i class="fas fa-utensils"></i>
-         レシピ投稿はこちら
-        <% end %>
+    <h2>レシピ一覧</h2>
     </div>
     <div class="col-xs-8 pl-5 pt-3">
       <div class="search-form">
@@ -23,7 +16,7 @@
 	  <div class="row py-5">
 		<% @recipes.each do |recipe| %>
 		<div class="col-xs-4 px-5 py-3">
-			<%= link_to recipe_path(recipe) do %>
+			<%= link_to admin_recipe_path(recipe) do %>
         <%= image_tag recipe.image, size: "200x200" %><br>
         <p class="text-center pt-2"><%= recipe.title %></p>
 			<% end %>

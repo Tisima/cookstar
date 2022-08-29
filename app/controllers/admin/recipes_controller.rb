@@ -2,12 +2,7 @@ class Admin::RecipesController < ApplicationController
   def index
     @recipes = Recipe.all.page(params[:page]).order(created_at: :desc)
   end
-
-  def ranking
-    recipe = Recipe.includes(:favorited_users).sort {|a,b| b.favorited_users.size <=> a.favorited_users.size}
-    @recipes = Kaminari.paginate_array(recipe).page(params[:page]).per(9)
-  end
-
+  
   def show
     @recipe = Recipe.find(params[:id])
   end

@@ -1,4 +1,5 @@
 class Public::UsersController < ApplicationController
+
   def show
     @user = User.find(params[:id])
     @recipes = @user.recipes.page(params[:page])
@@ -31,6 +32,18 @@ class Public::UsersController < ApplicationController
     @user.update!(is_deleted: true)
     reset_session
     redirect_to root_path
+  end
+
+  def likes
+    @user = User.find(params[:id])
+    recipes= Recipe.where(user_id: @user.id).pluck(:id)
+    @like_recipes = Recipe.find(recipes)
+  end
+
+  def search
+    @users = User.search(params[:keyword])
+    @keyword = params[:keyword]
+    render "index"
   end
 
     private

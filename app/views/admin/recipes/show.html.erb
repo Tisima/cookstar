@@ -1,0 +1,43 @@
+  <div class="container">
+    <div class="row">
+      <div class="col-xg-4 pt-2">
+
+        <% if @recipe.image.attached? %>
+          <%= image_tag @recipe.image, size: "300x250" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "300x300" %>
+        <% end %>
+      </div>
+
+      <div class="col-xg-8">
+        <div>
+          <h2 class="red-border px-5 pt-5"><%= @recipe.title %></h2>
+            <div class="text-right pt-3"><%= link_to "編集する", edit_recipe_path, class: 'btn btn-success' %>
+            <span>　　</span><%= link_to "削除する", recipe_path(@recipe), method: :delete, class: 'btn btn-danger' %>
+            </div>
+        </div>
+      </div>
+    </div>
+      <div class="row">
+        <div>
+          <h5 class="red-border px-3 pb-2 pt-4">材料</h5>
+          <p class="ml-5"><%= @recipe.ingredients %></p><br>
+          <h5 class="red-border px-3 pb-2">料理手順</h5>
+          <p class="ml-5"><%= @recipe.body %></p>
+          <p class="text-right pt-3">登録日<%= @recipe.created_at.strftime('%Y/%m/%d') %></p>
+        </div>
+      </div>
+      	  <div class="py-4">
+            <p>コメント件数：<%= @recipe.recipe_comments.count %></p>
+            <% @recipe.recipe_comments.each do |post_comment| %>
+              <p class="py-3"><%= image_tag recipe_comment.user.profile_image(100,100) %></p>
+              <%= recipe_comment.user.name %>
+              <%= recipe_comment.created_at.strftime('%Y/%m/%d') %><%= recipe_comment.comment %>
+              <%= link_to "削除", post_image_post_comment_path(post_comment.post_image, post_comment), method: :delete %>
+            <% end %>
+          </div>
+        <div>
+      </div>
+    </div>
+  </div>
+
