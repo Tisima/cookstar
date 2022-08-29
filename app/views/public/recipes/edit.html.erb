@@ -13,22 +13,17 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-5 py-3">
-      <%= form_with model: @recipe, url: recipe_path(@recipe.id), local: true, method: :patch do |f| %>
-    <h4>料理名</h4>
+    <%= form_with model: @recipe, url: recipe_path(@recipe.id), local: true, method: :patch do |f| %>
+      <div class="col-5 py-3">
+        <h4>料理名</h4>
         <%= f.text_field :title, :placeholder => "＊必須" ,size: "50x10" %>
-    </div>
-    <div class="col-7 text-center pt-4">
-      <%= f.submit 'レシピを作成', class: 'btn btn-primary' %>
-    </div>
-  <div class="row">
-    <div class="col-9">
-      <h4 class="pt-3">画像(必須)</h4>
-      <%= f.file_field :image, accept: "image/*" %>
-      <h4 class="pt-3">材料</h4>
-      <%= f.text_area :ingredients, :placeholder => "＊必須" ,size: "130x6" %>
-      <h4 class="pt-3">作り方</h4>
-      <%= f.text_area :body, :placeholder => "＊必須" ,size: "130x8" %>
+        <h4 class="pt-3">画像(必須)</h4>
+        <%= f.file_field :image, accept: "image/*" %>
+        <h4 class="pt-3">材料</h4>
+        <%= f.text_area :ingredients, :placeholder => "＊必須" ,size: "130x6" %>
+        <h4 class="pt-3">作り方</h4>
+        <%= f.text_area :body, :placeholder => "＊必須" ,size: "130x8" %>
+        <p class="py-4"><%= f.submit 'レシピを作成', class: 'btn btn-primary' %></p>
     <% end %>
     </div>
   </div>
