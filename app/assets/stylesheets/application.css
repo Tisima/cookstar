@@ -13,13 +13,8 @@
  *= require_tree .
  *= require_self
  */
-
 body {
-  display: flex;
-  flex-flow: column;
-  min-height: 100vh;
-}
-main {
+  background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
   display: flex;
   flex-flow: column;
   min-height: 100vh;

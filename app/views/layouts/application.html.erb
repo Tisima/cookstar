@@ -29,26 +29,26 @@
 
             <% else %><%# それ以外の時 %>
 
-            <li class="nav-item px-1">
-            <%= link_to new_user_session_path,class: 'text-light' do %>
-            <i class="fas fa-sign-in-alt"></i>
-            ログイン
-            <% end %>
-            </li>
+              <li class="nav-item px-1">
+                <%= link_to homes_about_path,class: 'text-light' do %>
+                  <i class="fas fa-address-card"></i>
+                  サイト概要
+                <% end %>
+              </li>
 
-            <li class="nav-item px-1">
-            <%= link_to homes_about_path,class: 'text-light' do %>
-             <i class="fas fa-address-card"></i>
-             アバウト
-             <% end %>
-             </li>
+              <li class="nav-item px-1">
+                <%= link_to new_user_session_path,class: 'text-light' do %>
+                  <i class="fas fa-sign-in-alt"></i>
+                  ログイン
+                <% end %>
+              </li>
 
-             <li class="nav-item px-1">
-             <%= link_to new_admin_session_path, class: 'text-light'  do %>
-             <i class="far fa-user"></i>
-             管理者ログイン
-             <% end %>
-             </li>
+              <li class="nav-item px-1">
+                <%= link_to new_admin_session_path, class: 'text-light'  do %>
+                  <i class="far fa-user"></i>
+                  管理者ログイン
+                <% end %>
+              </li>
            <% end %>
         </div>
       </nav>
@@ -66,7 +66,10 @@
     </main>
     <footer class="mastfoot mt-auto">
       <div class="inner">
-        <p>Cover template for</p>
+        <p class="py-3">Cookstar</p>
+        <i class="fa-brands fa-twitter px-1"></i>
+        <i class="fa-brands fa-line px-1"></i>
+        <i class="fa-brands fa-facebook px-1"></i>
       </div>
     </footer>
   </body>

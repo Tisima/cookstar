@@ -1,2 +1,19 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+
+body {
+  background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+main {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+.icon::before {
+  font-family: "Font Awesome 5 Free"; /*←ココ！！！！！！！*/
+  font-weight: 900;
+  content: "\f007";
+}
