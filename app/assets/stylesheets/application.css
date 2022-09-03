@@ -13,9 +13,14 @@
  *= require_tree .
  *= require_self
  */
-body {
-  background-image: linear-gradient(to right, #ffecd2 0%, #fcb69f 100%);
-  display: flex;
-  flex-flow: column;
-  min-height: 100vh;
+@media screen and (min-width:960px){
+　　.red-border {font-size: 18px;
+　　width: 100%;
+    color: blue; }
+}
+
+@media screen and (min-width:480px){
+　　.red-border {font-size: 1px;
+　　width: 100%;
+    color: blue; }
 }
