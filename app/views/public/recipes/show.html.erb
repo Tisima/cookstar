@@ -56,7 +56,6 @@
                 <td><p class="pt-3 px-4"><%= image_tag recipe_comment.user.profile_image, size: "100x100" %></p>
                 <%= recipe_comment.user.name %></td>
                 <td class="px-4"><%= recipe_comment.comment %><td>
-                <td class="px-4"><%= recipe_comment.created_at.strftime('%Y/%m/%d') %><td>
                 <% if recipe_comment.user == current_user %>
                   <%= link_to "削除", recipe_recipe_comment_path(recipe_comment.recipe_id, recipe_comment.id), method: :delete %>
                 <% end %>

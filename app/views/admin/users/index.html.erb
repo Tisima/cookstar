@@ -1,27 +1,28 @@
-<div class="container px-5 px-sm-0">
+<div class="container py-3">
   <div class="row">
-<div class="col-md-8 offset-md-1">
-  <h2>会員一覧</h2>
-  <span>　　　　</span>
-  <div class="search-form">
-    <%= form_with url: admin_user_search_path, method: :get, local: true do |f| %>
-      <%= f.text_field :keyword, value: @keyword %>
-      <%= f.submit "検索" %>
-    <% end %>
-  <table class="table table-hover table-inverse">
-  <tbody>
-     <tr>
-      <th colspan="3"></th>
-    </tr>
-  </tbody>
-    <% @users.each do |user| %>
-      <tr>
-      <td><%= image_tag user.get_profile_image, size: "100x100"%></td>
-      <td><%= user.name %></td>
-      <td><%= link_to "詳細ページ", admin_user_path(user.id) %></td>
-    </tr>
-    <% end %>
-</table>
+	  <div class="col-xs-6 py-3">
+      <h2>会員一覧</h2>
+    </div>
+    <div class="col-xs-10 col-md-6 py-4">
+      <%= form_with url: admin_user_search_path, method: :get, local: true do |f| %>
+        <%= f.text_field :keyword, value: @keyword %>
+        <%= f.submit "検索" %>
+      <% end %>
+    </div>
+      <table class="table table-hover table-inverse">
+        <tbody>
+         <tr>
+          <th colspan="3"></th>
+        </tr>
+      </tbody>
+        <% @users.each do |user| %>
+          <tr>
+          <td><%= image_tag user.get_profile_image, size: "100x100"%></td>
+          <td><p>ユーザー名</p><h5><%= user.name %><h5></td>
+          <td><%= link_to "詳細ページへ", admin_user_path(user.id) %></td>
+          </tr>
+        <% end %>
+      </table>
     </div>
   </div>
 </div>
