@@ -4,7 +4,7 @@ class Public::RecipesController < ApplicationController
   end
 
   def ranking
-    recipe = Recipe.includes(:liked_users).sort {|a,b| b.liked_users.size <=> a.liked_users.size}
+    recipe = Recipe.includes(:liked_users).sort { |a, b| b.liked_users.size <=> a.liked_users.size }
     @recipes = Kaminari.paginate_array(recipe).page(params[:page]).per(9)
   end
 
@@ -23,30 +23,32 @@ class Public::RecipesController < ApplicationController
     @recipe.user_id = current_user.id
     if @recipe.save
       redirect_to recipe_path(@recipe.id)
-      flash[:success] = "商品を登録しました"
+      flash[:success] = '商品を登録しました'
     else
       render 'new'
     end
   end
 
   def edit
+    return redirect_to recipe_path(params[:id]) unless current_user.recipes.exists?(id: params[:id])
     @recipe = Recipe.find(params[:id])
+
   end
 
   def search
     @recipes = Recipe.search(params[:keyword]).page(params[:page])
     @keyword = params[:keyword]
-    render "index"
+    render 'index'
   end
 
   def update
     @recipe = Recipe.find(params[:id])
-  if @recipe.update(recipe_params)
-    flash[:notice]="レシピを更新しました！"
-    redirect_to recipe_path(@recipe.id)
-  else
-    render :edit
-  end
+    if @recipe.update(recipe_params)
+      flash[:notice] = 'レシピを更新しました！'
+      redirect_to recipe_path(@recipe.id)
+    else
+      render :edit
+    end
   end
 
   def destroy

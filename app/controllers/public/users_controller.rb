@@ -42,8 +42,8 @@ class Public::UsersController < ApplicationController
 
   def likes
     @user = User.find(params[:id])
-    recipes= Recipe.where(user_id: @user.id).pluck(:id)
-    @like_recipes = Recipe.find(recipes)
+    recipe_ids = @user.likes.pluck(:recipe_id)
+    @liked_recipes = Recipe.where(id: recipe_ids)
   end
 
     private

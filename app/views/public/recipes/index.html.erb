@@ -3,7 +3,6 @@
 	  <div class="col-xs-2">
       <h2>新規レシピ</h2>
     </div>
-
     <div class="col-xs-12 pull-right pl-5 pt-3">
       <%= link_to new_recipe_path,class: 'text-block' do %>
          <i class="fas fa-utensils"></i>
@@ -19,7 +18,7 @@
       </div>
     </div>
   </div>
-	  <div class="row py-5">
+  <div class="row  py-5">
 		<% @recipes.each do |recipe| %>
 		<div class="col-xs-4 px-5 py-3">
 			<%= link_to recipe_path(recipe) do %>
@@ -28,6 +27,6 @@
 			<% end %>
 		</div>
 		<% end %>
+		<%= paginate @recipes %>
 	</div>
-<%= paginate @recipes %>
 </div>

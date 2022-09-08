@@ -9,9 +9,9 @@ class Admin::UsersController < ApplicationController
   end
 
   def search
-  @users = User.search(params[:keyword])
-  @keyword = params[:keyword]
-  render "index"
+    @users = User.search(params[:keyword])
+    @keyword = params[:keyword]
+    render 'index'
   end
 
   def unsubscribe

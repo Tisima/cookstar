@@ -10,7 +10,7 @@
     </div>
   </div>
 	  <div class="row py-5">
-		<% @like_recipes.each do |recipe|%>
+		<% @liked_recipes.each do |recipe|%>
 		<div class="col-xs-4 px-5 py-3">
 			<%= link_to recipe_path(recipe) do %>
         <%= image_tag recipe.image, size: "200x200" %><br>

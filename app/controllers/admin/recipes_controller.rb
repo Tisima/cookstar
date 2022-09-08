@@ -15,7 +15,7 @@ class Admin::RecipesController < ApplicationController
   def search
     @recipes = Recipe.search(params[:keyword]).page(params[:page])
     @keyword = params[:keyword]
-    render "index"
+    render 'index'
   end
 
   def destroy

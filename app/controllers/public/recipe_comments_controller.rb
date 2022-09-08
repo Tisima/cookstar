@@ -17,5 +17,4 @@ class Public::RecipeCommentsController < ApplicationController
   def recipe_comment_params
     params.require(:recipe_comment).permit(:comment)
   end
-
 end
