@@ -31,8 +31,8 @@ class Public::RecipesController < ApplicationController
 
   def edit
     return redirect_to recipe_path(params[:id]) unless current_user.recipes.exists?(id: params[:id])
-    @recipe = Recipe.find(params[:id])
 
+    @recipe = Recipe.find(params[:id])
   end
 
   def search

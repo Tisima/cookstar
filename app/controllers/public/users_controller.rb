@@ -1,5 +1,4 @@
 class Public::UsersController < ApplicationController
-
   def show
     @user = User.find(params[:id])
     @recipes = @user.recipes.page(params[:page])
@@ -15,18 +14,18 @@ class Public::UsersController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-  if @user.update(user_params)
-    flash[:notice]="ユーザ情報を更新しました！"
-    redirect_to user_path(@user.id)
-  else
-    render :edit
-  end
+    if @user.update(user_params)
+      flash[:notice] = 'ユーザ情報を更新しました！'
+      redirect_to user_path(@user.id)
+    else
+      render :edit
+    end
   end
 
   def search
-  @users = User.search(params[:keyword])
-  @keyword = params[:keyword]
-  render "index"
+    @users = User.search(params[:keyword])
+    @keyword = params[:keyword]
+    render 'index'
   end
 
   def unsubscribe
@@ -46,7 +45,8 @@ class Public::UsersController < ApplicationController
     @liked_recipes = Recipe.where(id: recipe_ids)
   end
 
-    private
+  private
+
   def user_params
     params.require(:user).permit(:name, :introduction, :profile_image)
   end
