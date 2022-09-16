@@ -10,22 +10,20 @@
     </ul>
 <% end %>
       <h1 class="py-4">レシピ作成</h1>
+        <%= form_with model: @recipe, method: :post, local: true do |f| %>
+          <div class="pt-1">
+            <h4>料理名</h4>
+            <%= f.text_field :title, :placeholder => "＊必須" ,size: "50x10" %>
+            <h4 class="pt-3">画像(必須)</h4>
+            <%= f.file_field :image, accept: "image/*" %>
+            <h4 class="pt-3">材料</h4>
+            <%= f.text_area :ingredients, :placeholder => "＊必須" ,size: "130x6" %>
+            <h4 class="pt-3">作り方</h4>
+            <%= f.text_area :body, :placeholder => "＊必須" ,size: "130x8" %>
+            <p class="py-4"><%= f.submit 'レシピを作成', class: 'btn btn-primary' %></p>
+          </div>
+        <% end %>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <%= form_with model: @recipe, method: :post, local: true do |f| %>
-      <div class="pt-1">
-        <h4>料理名</h4>
-        <%= f.text_field :title, :placeholder => "＊必須" ,size: "50x10" %>
-        <h4 class="pt-3">画像(必須)</h4>
-        <%= f.file_field :image, accept: "image/*" %>
-        <h4 class="pt-3">材料</h4>
-        <%= f.text_area :ingredients, :placeholder => "＊必須" ,size: "130x6" %>
-        <h4 class="pt-3">作り方</h4>
-        <%= f.text_area :body, :placeholder => "＊必須" ,size: "130x8" %>
-        <p class="py-4"><%= f.submit 'レシピを作成', class: 'btn btn-primary' %></p>
-      </div>
-    <% end %>
-      </div>
   </div>
 </div>
