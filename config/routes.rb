@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     get 'user_search' => 'users#search'
     get 'ranking' => 'recipes#ranking'
     resources :recipes, only: %i[show index new create edit update destroy] do
-      resources :likes, only: %i[create destroy]
+      resource :likes, only: %i[create destroy]
       resources :recipe_comments, only: %i[create destroy]
     end
   end

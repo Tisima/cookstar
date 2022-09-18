@@ -1,0 +1,11 @@
+<% if recipe.liked_by?(current_user) %>
+  <p class="py-4">
+  <%= link_to recipe_likes_path(recipe), method: :delete, remote: true, class: "favorite_btn" do %>
+  ♥<%= recipe.likes.count %> いいね
+  <% end %>
+<% else %>
+  <p class="py-4">
+  <%= link_to recipe_likes_path(recipe), method: :post, remote: true, class: "favorite_btn" do %>
+  ♡<%= recipe.likes.count %> いいね
+  <% end %>
+<% end %>

@@ -56,18 +56,17 @@ end
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'devise'
 gem 'kaminari', '~> 1.2.1'
+#タイムゾーンの情報管理
 gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 
 gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
-
-gem 'net-imap'
-gem 'net-pop'
-gem 'net-smtp'
 # エラーメッセージの日本語化
 gem 'rails-i18n'
 # インデント確認用
 gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
+#ajax通信
+gem 'jquery-rails'
