@@ -1,6 +1,7 @@
 class Recipe < ApplicationRecord
   belongs_to :user, optional: true
   has_many :likes, dependent: :destroy
+  has_many :liked_users, through: :likes, source: :user
   has_many :recipe_comments, dependent: :destroy
   def liked_by?(user)
     likes.where(user_id: user.id).exists?

@@ -7,6 +7,7 @@ class User < ApplicationRecord
   has_many :recipes, dependent: :destroy
   has_one_attached :profile_image
   has_many :likes, dependent: :destroy
+  has_many :liked_recipes, through: :likes, source: :recipe
   has_many :recipe_comments, dependent: :destroy
   has_many :relationships, class_name: 'Relationship', foreign_key: 'follower_id', dependent: :destroy
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'followed_id', dependent: :destroy
@@ -15,6 +16,10 @@ class User < ApplicationRecord
 
   def self.search(keyword)
     where(['name like? OR introduction like?', "%#{keyword}%", "%#{keyword}%"])
+  end
+
+  def liked_by?(post_id)
+    likes.where(recipe_id: recipe_id).exists?
   end
 
   # フォローしたときの処理
