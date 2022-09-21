@@ -10,8 +10,8 @@
               <%= link_to "編集する", edit_recipe_path, class: 'btn btn-success' %>
               <span>　　</span><%= link_to "削除する", recipe_path(@recipe), method: :delete, class: 'btn btn-danger' %>
           <% end %>
-          <div id="recipe_btn_<%= @recipe.id %>">
-            <%= render 'public/likes/like', recipe: @recipe %>
+          <div id = "like_<%= @recipe.id %>">
+            <%= render partial: "public/likes/like", locals: { recipe: @recipe } %>
           </div>
         </div>
       </div>

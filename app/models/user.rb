@@ -18,7 +18,7 @@ class User < ApplicationRecord
     where(['name like? OR introduction like?', "%#{keyword}%", "%#{keyword}%"])
   end
 
-  def liked_by?(post_id)
+  def liked_by?(recipe_id)
     likes.where(recipe_id: recipe_id).exists?
   end
 
