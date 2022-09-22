@@ -1,4 +1,5 @@
 class Public::LikesController < ApplicationController
+  #https://qiita.com/oak1331/items/3e5508d9405c96ae6786
   before_action :authenticate_user!, only: [:create, :destroy]
   before_action :recipe_params, only: [:create, :destroy]
 

@@ -14,6 +14,13 @@ class User < ApplicationRecord
   has_many :followings, through: :relationships, source: :followed
   has_many :followers, through: :reverse_of_relationships, source: :follower
 
+  validates :name, presence: true
+  validates :email, presence: true, length: { maximum: 255 }
+  PASSWORD_REGEX = /\A(?=.*?[a-z])(?=.*?[\d])[a-z\d]+\z/i.freeze
+  validates_format_of :password, with: PASSWORD_REGEX
+  VALID_PASSWORD_REGEX = /\A[a-z0-9]+\z/i
+  validates :password, format: { with: VALID_PASSWORD_REGEX }
+
   def self.search(keyword)
     where(['name like? OR introduction like?', "%#{keyword}%", "%#{keyword}%"])
   end
