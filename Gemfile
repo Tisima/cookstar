@@ -73,5 +73,6 @@ gem 'rubocop', require: false
 gem 'rubocop-rails', require: false
 #ajax通信
 gem 'jquery-rails'
-gem "net-smtp"
-
+gem 'net-imap'
+gem 'net-pop'
+gem 'net-smtp'
